@@ -13,6 +13,7 @@
             padding: 40px;
             background-color: rgb(184, 178, 178);
             border-radius: 20px;
+            box-sizing: border-box;
         }
         .cart_image{
             width: 80px;
@@ -41,11 +42,11 @@
             color: white;
             border: 1px solid rgb(50, 67, 255);
             border-radius: 10px;
-            font-size: 17px;
+            font-size: 15px;
             transition: font-size 0.3s , color 0.4s;
         }
         .addToCart_button:active{
-            font-size: 16px;
+            font-size: 14px;
             color: rgb(21, 36, 21);
         }
         .reset_button{
@@ -54,12 +55,25 @@
             color: rgb(255, 252, 252);
             border: 1px solid rgb(50, 102, 125);
             border-radius: 10px;
-            font-size: 17px;
+            font-size: 15px;
             transition: font-size 0.3s , color 0.3s;
         }
         .reset_button:active{
-            font-size: 16px;
+            font-size: 14px;
             color: rgb(95, 138, 17);
+        }
+        .removeOne_button{
+            padding: 8px 20px 8px 20px;
+            background-color: rgba(128, 220, 110, 0.973);
+            color: rgb(43, 25, 25);
+            border: 1px solid rgb(50, 102, 125);
+            border-radius: 10px;
+            font-size: 15px;
+            transition: font-size 0.3s , color 0.3s;            
+        }
+        .removeOne_button:active{
+            font-size: 14px;    
+            color: rgb(255, 253, 253);
         }
 
     </style>
@@ -68,6 +82,7 @@
     <main class="main_section">
         <div>
             <button onclick="addToCart()" id="addToCart" class="addToCart_button">Add to cart</button>
+            <button onclick="removeOne()" class="removeOne_button">Remove one</button>
             <button onclick="reset()" class="reset_button">Reset</button>
         </div>
         <div class="cart_image_box">
@@ -83,6 +98,15 @@
             cartQuantity++;
             document.getElementById('quantity').innerText = cartQuantity;
             document.getElementById('counterBox').style.display = "flex";
+        }
+        function removeOne(){
+            if(cartQuantity > 1){
+                cartQuantity--;
+                document.getElementById('quantity').innerText = cartQuantity;
+            }else{
+                document.getElementById('counterBox').style.display = "none";
+            }
+
         }
         function reset(){
             cartQuantity = 0;
