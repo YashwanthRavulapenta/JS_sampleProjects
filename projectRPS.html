@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R-P-S Game</title>
+    <style>
+        .main_box{
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(89, 89, 78);
+
+        }
+        .each_button{
+            border: 0px;
+            padding: 7px 18px 7px 18px;
+            font-size: 15px;
+            border-radius: 5px;
+        }
+        .each_button:active{
+            font-size: 14px;
+            cursor: pointer;
+        }
+        #myInfo,#computerInfo,#resultInfo{
+            text-align: center;
+            height: 30px;
+            width: 200px;
+            color: white;
+        }
+        
+        .user_picked_style{
+            font-size: 20px;
+            font-weight: 700;
+            color: rgb(177, 144, 255);
+        }
+        .str_style{
+            font-size: 20px;
+            font-weight: 700;
+            color: rgb(177, 144, 255);
+        }
+    </style>
+</head>
+<body>
+    <div class="main_box">
+        <h1 style="color: rgb(230, 233, 227);">ROCK | PAPER | SESSIORS</h1>
+        <div>
+            <button class="each_button" onclick="humanChooseRock()">Rock</button>
+            <button class="each_button" onclick="humanChoosePaper()">Paper</button>
+            <button class="each_button" onclick="humanChooseSessior()">Sessior</button>
+        </div>
+        <div>
+            <p id="myInfo"></p>
+            <p id="computerInfo"></p>
+            <p id="resultInfo"></p>
+        </div>
+    </div>
+    <script>
+        function computerChoose(){
+            let randVal = Math.floor(Math.random()*3) ;
+            if(randVal === 0){
+                return 'Rock'
+            }else if(randVal === 1){
+                return 'Paper'
+            }else{
+                return 'Sessior'
+            }
+        }
+        function humanChooseRock(){
+            let str = computerChoose();
+            document.getElementById('myInfo').innerHTML = 
+            `You choose : <span class="user_picked_style">Rock</span>`;
+            document.getElementById('computerInfo').innerHTML = `Computer chooses : <span class="str_style">${str}</span>`;
+            if(str==='Rock'){
+                document.getElementById('resultInfo').innerText = 'Draw 😁'
+            }else if(str==='Sessior'){
+                document.getElementById('resultInfo').innerText = 'You wins 🎉'
+            }else if(str==='Paper'){
+                document.getElementById('resultInfo').innerText = 'You Lose 😔'
+            }
+        }
+        function humanChoosePaper(){
+            let str = computerChoose();
+            document.getElementById('myInfo').innerHTML = `You choose : <span class="user_picked_style">Paper</span>`;
+            document.getElementById('computerInfo').innerHTML = `computer chooses : <span class="str_style">${str}</span>`;
+            if(str==='Rock'){
+                document.getElementById('resultInfo').innerText = 'You Wins 🎉'
+            }else if(str==='Sessior'){
+                document.getElementById('resultInfo').innerText = 'You Lose 😔'
+            }else if(str==='Paper'){
+                document.getElementById('resultInfo').innerText = 'Draw 😁'
+            }
+        }
+        function humanChooseSessior(){
+            let str = computerChoose();
+            document.getElementById('myInfo').innerHTML = `You choose : <span class="user_picked_style">Sessior</span>`;
+            document.getElementById('computerInfo').innerHTML = `computer chooses : <span class="str_style">${str}</span>`;
+            if(str==='Rock'){
+                document.getElementById('resultInfo').innerText = 'You Lose 😔'
+            }else if(str==='Sessior'){
+                document.getElementById('resultInfo').innerText = 'Draw 😁'
+            }else if(str==='Paper'){
+                document.getElementById('resultInfo').innerText = 'You Win 🎉'
+            }
+        }
+    </script>
+</body>
+</html>
