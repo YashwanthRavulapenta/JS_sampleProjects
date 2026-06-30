@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guessing Number</title>
+    <style>
+        .main_div{
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            row-gap: 20px;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(176, 170, 170);
+            box-sizing: border-box;
+            border-radius: 6px;
+        }
+        .label_name{
+            font-size: 19px;
+            color: rgb(146, 27, 27);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        #inputNumber{
+            padding: 5px 12px 5px;
+            background-color: transparent;
+            border: 1px solid rgb(17, 41, 59);
+            border-radius: 6px;
+            color: rgb(37, 87, 68);
+            font-size: 18px
+        }
+        #guessButton{
+            padding: 5px 10px 5px 10px;
+            background-color: rgb(42, 91, 218);
+            border: 1px solid black;
+            border-radius: 5px;
+            width: 70px;
+            height: 31px;
+            color: white;
+            transition: font-size 0.4s;
+        }
+        #guessButton:active{
+            font-size: 15px;
+        }
+        #resultInfo{
+            text-align: center;
+            font-size: 19px;
+            color: rgb(12, 26, 95);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main_div">
+        <div>
+            <label for="" class="label_name">Guess Number : </label>
+            <input type="number" name="" placeholder="Enter number" id="inputNumber">
+            <button onclick="game()" id="guessButton">Guess</button>
+        </div>
+        <p id="resultInfo"></p>
+    </div>
+
+    <script>
+        let computerGenerated = Math.floor(Math.random()*20) + 1;
+        let tries = 0;
+        game = () =>{
+            let userGuess = document.getElementById('inputNumber').value;
+            if(userGuess > 20){
+                document.getElementById('resultInfo').innerText = `Enter Value in Range (0 - 20) only`
+            }   else if(userGuess == ''){
+                document.getElementById('resultInfo').innerText = `Enter Value first`
+            }else if(computerGenerated==userGuess){
+                tries++;
+                document.getElementById('resultInfo').innerText = `you won the game after : ${tries} tries`
+            }else if(userGuess < computerGenerated){
+                tries++;
+                document.getElementById('resultInfo').innerText = `Guess something bigger`
+                document.getElementById('inputNumber').value = '';
+            }else{
+                tries++
+                document.getElementById('resultInfo').innerText = `Guess something smaller`
+                document.getElementById('inputNumber').value = '';
+            }
+        }
+    </script>
+
+</body>
+</html>
